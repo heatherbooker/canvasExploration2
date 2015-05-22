@@ -7,9 +7,12 @@
 		<canvas id="mycanvas" width="500" height="300" style="border:1px solid black">
 		</canvas>
 		<div id="buttons">
-		<button id="makeNewArray" onclick="makesArray.makeArray()">Make New Array</button>
 		<input type="number" max="5" id="NUMBER"> (Maximum: 5)
+		<button id="makeNewArray" onclick="makesArray.makeArray()">Make New Array</button>
 	</div>
+	<div id="toArray">
+		<input type="text" id="textInArray">
+		<button onclick="displaysText.pushToArray()">Push To Array</button>
 	</body>
 
 	<script type="text/javascript" src="script.js"></script>
@@ -17,6 +20,7 @@
 	<style>
 	div {
 		clear: both;
+		margin-top: 10px;
 	}
 	</style>
 
