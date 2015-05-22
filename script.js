@@ -1,6 +1,8 @@
 var canvas = document.getElementById('mycanvas'),
     context = canvas.getContext('2d');
 
+var isArray = false;
+var yourArray = [];
 
 var makesArray = {
 
@@ -37,6 +39,8 @@ var makesArray = {
     makeArray: function() {
         var numberOfElements = document.getElementById("NUMBER").value;
         makesArray.modelArray(numberOfElements);
+        isArray = true;
+        console.log(isArray);
     },
 };
 
@@ -48,28 +52,45 @@ var displaysText = {
         context.fillText(text, x, 130);
     },
     pushToArray: function() {
-        if (positionToPushTo < 5) {
-            var textToPush = document.getElementById("textInArray").value;
-            if (positionToPushTo === 0) {
-                makesArray.drawBox(100);
-                displaysText.write(textToPush, 120);
-            } else if (positionToPushTo === 1) {
-                makesArray.drawBox(160);
-                displaysText.write(textToPush, 180);
-            } else if (positionToPushTo === 2) {
-                makesArray.drawBox(220);
-                displaysText.write(textToPush, 240);
-            } else if (positionToPushTo === 3) {
-                makesArray.drawBox(280);
-                displaysText.write(textToPush, 300);
-            } else if (positionToPushTo === 4) {
-                makesArray.drawBox(340);
-                displaysText.write(textToPush, 360);
+        if (isArray) {
+            if (positionToPushTo < 5) {
+                var textToPush = document.getElementById("textInArray").value;
+                if (positionToPushTo === 0) {
+                    makesArray.drawBox(100);
+                    displaysText.write(textToPush, 120);
+                    yourArray.push(textToPush);
+                } else if (positionToPushTo === 1) {
+                    makesArray.drawBox(160);
+                    displaysText.write(textToPush, 180);
+                    yourArray.push(textToPush);
+                } else if (positionToPushTo === 2) {
+                    makesArray.drawBox(220);
+                    displaysText.write(textToPush, 240);
+                    yourArray.push(textToPush);
+                } else if (positionToPushTo === 3) {
+                    makesArray.drawBox(280);
+                    displaysText.write(textToPush, 300);
+                    yourArray.push(textToPush);
+                } else if (positionToPushTo === 4) {
+                    makesArray.drawBox(340);
+                    displaysText.write(textToPush, 360);
+                    yourArray.push(textToPush);
+                };
+                positionToPushTo++;
+                console.log(yourArray);
+            } else {
+                alert('Sorry, this program is only equipped to handle arrays with up to 5 elements.');
             };
-            positionToPushTo++;
-            console.log(positionToPushTo);
         } else {
-            alert('Sorry, this program is only equipped to handle arrays with up to 5 elements.');
+            alert('No array to push to!');
         };
     },
+}
+
+function viewArray() {
+    if (isArray) {
+        alert('Your array consists of the following elements: ' + yourArray);
+    } else {
+        alert('No array to view!');
+    };
 }
